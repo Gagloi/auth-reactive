@@ -1,0 +1,45 @@
+server:
+  port: 8090
+google:
+  client_id: 693275690919-i7rkcih7tkkcen3jleqc2n6hnch8u3f3.apps.googleusercontent.com
+jwt:
+  token:
+    secret: somerandomsecretsomerandomsecretsomerandomsecretsomerandomsecretsomerandomsecret
+    expired: 900000            #15 minutes
+    refresh-expired: 604800000 #7 days
+cookie:
+  domain: vverenko.me
+  httpOnly: true
+  secure: true
+  path: /
+  same-site: Lax
+
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+
+spring:
+  datasource:
+    url: jdbc:postgresql://docker:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  r2dbc:
+    url: r2dbc:postgresql://docker:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hostname: docker:${DB_PORT}/${DB_NAME}
+    driver-class-name: org.postgresql.Driver
+  kafka:
+    persisted-batch-size: ${spring_kafka_persisted-batch-size:50}
+    bootstrap-servers: localhost:29092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: docker-consumer-group
+    topic:
+      name-user-topic: user-topic
+      name-bulk-user: docker
+      name-account: account
+      name-user-status: user-status

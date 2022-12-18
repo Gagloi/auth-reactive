@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2L
+      author: jarnik
+      changes:
+        - addColumn:
+            tableName: refresh_token
+            columns:
+              - column:
+                  name: expire_date
+                  type: timestamp

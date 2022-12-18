@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3L
+      author: jarnik
+      changes:
+        - createTable:
+            tableName: context
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: context
+                  type: json
+        - addAutoIncrement:
+            columnName: id
+            tableName: context
+            generationType: ALWAYS
