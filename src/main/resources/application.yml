@@ -22,15 +22,15 @@ management:
 
 spring:
   datasource:
-    url: jdbc:postgresql://docker:${DB_PORT}/${DB_NAME}
+    url: jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   r2dbc:
-    url: r2dbc:postgresql://docker:${DB_PORT}/${DB_NAME}
+    url: r2dbc:postgresql://localhost:${DB_PORT}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-    hostname: docker:${DB_PORT}/${DB_NAME}
+    hostname: localhost:${DB_PORT}/${DB_NAME}
     driver-class-name: org.postgresql.Driver
   kafka:
     persisted-batch-size: ${spring_kafka_persisted-batch-size:50}
